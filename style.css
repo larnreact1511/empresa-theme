@@ -1,0 +1,595 @@
+/*
+Theme Name: Empresa Theme
+Theme URI: https://example.com/empresa-theme
+Author: Luis Rojas
+Author URI: https://example.com
+Description: Tema corporativo minimalista construido con Bootstrap 5. Diseño "Kinetic Enterprise": azul corporativo #0056B3, tipografía Inter y estética de minimalismo corporativo moderno. Compatible con WordPress 7 y PHP 8.2+.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 7.0
+Requires PHP: 8.2
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: empresa-theme
+Tags: blog, business, corporate, portfolio, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, block-styles, wide-blocks, responsive-embeds
+*/
+
+/* ==========================================================================
+   Índice
+   1. Variables
+   2. Base
+   3. Tipografía
+   4. Botones y enlaces
+   5. Header / Navegación
+   6. Hero
+   7. Secciones
+   8. Tarjetas y features
+   9. Formularios
+   10. Blog / Entradas
+   11. Footer
+   12. Utilidades y animaciones
+   13. Accesibilidad
+   ========================================================================== */
+
+/* 1. Variables ------------------------------------------------------------ */
+:root {
+    --et-primary: #0056b3;
+    --et-primary-dark: #003f87;
+    --et-primary-light: #acc7ff;
+    --et-secondary: #1e293b;
+    --et-tertiary: #64748b;
+    --et-neutral: #f8fafc;
+    --et-surface: #ffffff;
+    --et-border: #e2e8f0;
+    --et-border-strong: #cbd5e1;
+    --et-placeholder: #94a3b8;
+    --et-text: #191c1e;
+    --et-text-muted: #64748b;
+    --et-radius: 0.25rem;
+    --et-radius-lg: 0.5rem;
+    --et-radius-xl: 0.75rem;
+    --et-container: 1200px;
+    --et-nav-height: 72px;
+    --et-shadow-ambient: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --et-shadow-xl: 0 1rem 2.5rem rgba(0, 0, 0, 0.15);
+    --et-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 2. Base ----------------------------------------------------------------- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--et-font);
+    color: var(--et-text);
+    background-color: var(--et-surface);
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--et-secondary);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+a {
+    color: var(--et-primary);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--et-primary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Compensar la barra de navegación fija */
+.site-main {
+    padding-top: var(--et-nav-height);
+}
+
+body.admin-bar .site-main {
+    padding-top: calc(var(--et-nav-height) + 32px);
+}
+
+/* 3. Tipografía ----------------------------------------------------------- */
+.display-1, .display-2, .display-3, .display-4 {
+    letter-spacing: -0.02em;
+}
+
+.text-muted-custom {
+    color: var(--et-text-muted) !important;
+}
+
+.eyebrow {
+    display: inline-block;
+    color: var(--et-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* 4. Botones y enlaces ---------------------------------------------------- */
+.btn {
+    border-radius: var(--et-radius);
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 0.625rem 1.25rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--et-primary);
+    border-color: var(--et-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--et-primary-container, var(--et-primary-dark));
+    border-color: var(--et-primary-dark);
+}
+
+.btn-outline-primary {
+    color: var(--et-primary);
+    border-color: var(--et-primary);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: var(--et-neutral);
+    color: var(--et-primary);
+    border-color: var(--et-primary);
+}
+
+/* 5. Header / Navegación -------------------------------------------------- */
+.site-header {
+    background-color: rgba(255, 255, 255, 0.92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+}
+
+.site-header .navbar {
+    min-height: var(--et-nav-height);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--et-primary);
+    letter-spacing: -0.01em;
+}
+
+.brand img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand:hover {
+    color: var(--et-primary-dark);
+}
+
+.site-header .navbar-nav .nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--et-text-muted);
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    height: var(--et-nav-height);
+    border-bottom: 2px solid transparent;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: var(--et-primary);
+}
+
+.site-header .navbar-nav .nav-link.current-menu-item,
+.site-header .navbar-nav .nav-link.active,
+.site-header .navbar-nav .current-menu-item > .nav-link {
+    color: var(--et-primary);
+    border-bottom-color: var(--et-primary);
+}
+
+.site-header .navbar-toggler {
+    border: none;
+}
+
+/* 6. Hero ----------------------------------------------------------------- */
+.hero {
+    background-color: var(--et-neutral);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--et-secondary);
+}
+
+.hero-title .text-primary {
+    color: var(--et-primary) !important;
+}
+
+.hero-image-wrap {
+    position: relative;
+}
+
+.hero-image-wrap::before {
+    content: '';
+    position: absolute;
+    top: -4rem;
+    right: -4rem;
+    width: 16rem;
+    height: 16rem;
+    background: rgba(0, 86, 179, 0.05);
+    border-radius: 50%;
+    filter: blur(48px);
+    z-index: 0;
+}
+
+.hero-image {
+    position: relative;
+    border-radius: var(--et-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--et-shadow-xl);
+    transform: rotate(2deg);
+    transition: transform 0.7s ease;
+}
+
+.hero-image:hover {
+    transform: rotate(0deg);
+}
+
+.hero-stat {
+    position: absolute;
+    bottom: -2rem;
+    left: -2rem;
+    background: var(--et-surface);
+    border: 1px solid var(--et-border);
+    border-radius: var(--et-radius-xl);
+    box-shadow: var(--et-shadow-ambient);
+    padding: 1rem;
+    z-index: 1;
+}
+
+.hero-stat .icon {
+    width: 3rem;
+    height: 3rem;
+    background: rgba(0, 86, 179, 0.1);
+    color: var(--et-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* 7. Secciones ------------------------------------------------------------ */
+.section {
+    padding: 5rem 0;
+}
+
+.section-neutral {
+    background-color: var(--et-neutral);
+}
+
+.section-alt {
+    background-color: var(--et-surface);
+}
+
+.section-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: var(--et-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.section-lead {
+    color: var(--et-text-muted);
+    font-size: 1rem;
+}
+
+/* 8. Tarjetas y features -------------------------------------------------- */
+.feature-card {
+    background: var(--et-surface);
+    border: 1px solid var(--et-border);
+    border-radius: var(--et-radius-lg);
+    padding: 1.5rem;
+    height: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+    border-color: var(--et-primary);
+    box-shadow: var(--et-shadow-ambient);
+}
+
+.feature-card .icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(0, 86, 179, 0.05);
+    color: var(--et-primary);
+    border-radius: var(--et-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.feature-card:hover .icon {
+    transform: scale(1.1);
+}
+
+.feature-card h3,
+.feature-card h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--et-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+    color: var(--et-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+
+.feature-card .card-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--et-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: gap 0.2s ease;
+}
+
+.feature-card:hover .card-link {
+    gap: 0.5rem;
+}
+
+/* Mini-card centrada (Why Choose Us) */
+.mini-card {
+    background: var(--et-surface);
+    border: 1px solid var(--et-border);
+    border-radius: var(--et-radius-lg);
+    padding: 1.25rem;
+    height: 100%;
+    text-align: center;
+    transition: box-shadow 0.2s ease;
+}
+
+.mini-card:hover {
+    box-shadow: var(--et-shadow-ambient);
+}
+
+.mini-card .icon {
+    font-size: 2.5rem;
+    color: var(--et-primary);
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.mini-card h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--et-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.mini-card p {
+    color: var(--et-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--et-primary);
+}
+
+/* 9. Formularios ---------------------------------------------------------- */
+.form-control {
+    border-color: var(--et-border-strong);
+    border-radius: var(--et-radius);
+    padding: 0.625rem 1rem;
+    color: var(--et-text);
+}
+
+.form-control:focus {
+    border-color: var(--et-primary);
+    box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.15);
+}
+
+.form-control::placeholder {
+    color: var(--et-placeholder);
+}
+
+.form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--et-secondary);
+}
+
+/* 10. Blog / Entradas ----------------------------------------------------- */
+.entry-card {
+    background: var(--et-surface);
+    border: 1px solid var(--et-border);
+    border-radius: var(--et-radius-lg);
+    overflow: hidden;
+    height: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.entry-card:hover {
+    border-color: var(--et-border-strong);
+    box-shadow: var(--et-shadow-ambient);
+}
+
+.entry-card .card-img-top {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.entry-card .card-body {
+    padding: 1.5rem;
+}
+
+.entry-card .entry-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.entry-card .entry-title a {
+    color: var(--et-secondary);
+}
+
+.entry-card .entry-title a:hover {
+    color: var(--et-primary);
+}
+
+.entry-meta {
+    font-size: 0.8125rem;
+    color: var(--et-text-muted);
+}
+
+.entry-content img {
+    border-radius: var(--et-radius);
+}
+
+.entry-content h2,
+.entry-content h3 {
+    margin-top: 2rem;
+}
+
+/* 11. Footer -------------------------------------------------------------- */
+.site-footer {
+    background-color: var(--et-neutral);
+    border-top: 1px solid var(--et-border);
+    padding: 3rem 0 0;
+    color: var(--et-text-muted);
+}
+
+.site-footer .footer-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--et-secondary);
+    margin-bottom: 1rem;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+.site-footer a {
+    color: var(--et-text-muted);
+}
+
+.site-footer a:hover {
+    color: var(--et-primary);
+}
+
+.site-footer .widget {
+    margin-bottom: 1.5rem;
+}
+
+.site-info {
+    border-top: 1px solid var(--et-border);
+    padding: 1.25rem 0;
+    font-size: 0.8125rem;
+}
+
+.site-info a {
+    color: var(--et-text-muted);
+}
+
+.site-info a:hover {
+    color: var(--et-primary);
+}
+
+/* 12. Utilidades y animaciones -------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-cta {
+    background-color: var(--et-primary);
+    color: var(--et-surface);
+}
+
+.section-cta h3 {
+    color: var(--et-surface);
+}
+
+.section-cta .btn-light {
+    background-color: var(--et-surface);
+    color: var(--et-primary);
+    border-color: var(--et-surface);
+}
+
+/* 13. Accesibilidad ------------------------------------------------------- */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    z-index: 100000;
+}
+
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    background: var(--et-secondary);
+    color: var(--et-surface);
+    padding: 0.5rem 1rem;
+    border-radius: var(--et-radius);
+    text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
