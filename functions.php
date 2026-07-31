@@ -363,3 +363,37 @@ function empresa_theme_get_the_archive_title( $title ) {
 	return $title;
 }
 add_filter( 'get_the_archive_title', 'empresa_theme_get_the_archive_title' );
+
+/**
+ * Registra los ajustes del Personalizador (Customizer) del tema.
+ *
+ * @param WP_Customize_Manager $wp_customize Instancia del Personalizador.
+ */
+function empresa_theme_customize_register( $wp_customize ) {
+	$wp_customize->add_section(
+		'empresa_theme_contact',
+		array(
+			'title'    => __( 'Datos de contacto', 'empresa-theme' ),
+			'priority' => 130,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'empresa_address',
+		array(
+			'default'           => __( 'Av. Innovación 101, Ciudad', 'empresa-theme' ),
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control(
+		'empresa_address',
+		array(
+			'label'   => __( 'Dirección', 'empresa-theme' ),
+			'section' => 'empresa_theme_contact',
+			'type'    => 'text',
+		)
+	);
+}
+add_action( 'customize_register', 'empresa_theme_customize_register' );

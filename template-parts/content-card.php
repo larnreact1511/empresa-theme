@@ -4,6 +4,10 @@
  *
  * @package Empresa_Theme
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'entry-card' ); ?>>

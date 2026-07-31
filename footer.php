@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
 </main><!-- #primary -->
 
 <footer id="colophon" class="site-footer">

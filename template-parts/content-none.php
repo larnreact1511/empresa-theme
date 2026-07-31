@@ -4,6 +4,10 @@
  *
  * @package Empresa_Theme
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 ?>
 
 <section class="no-results not-found py-5 text-center">

@@ -5,6 +5,10 @@
  * @package Empresa_Theme
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 get_header();
 ?>
 
