@@ -201,8 +201,7 @@ body.admin-bar .site-main {
 }
 
 .site-header .navbar-nav .nav-link.current-menu-item,
-.site-header .navbar-nav .nav-link.active,
-.site-header .navbar-nav .current-menu-item > .nav-link {
+.site-header .navbar-nav .nav-link.active {
     color: var(--et-primary);
     border-bottom-color: var(--et-primary);
 }
