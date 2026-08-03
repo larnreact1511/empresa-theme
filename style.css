@@ -100,6 +100,21 @@ body.admin-bar .site-main {
     padding-top: calc(var(--et-nav-height) + 32px);
 }
 
+/* Evita que la barra de administración de WP tape el header fijo */
+body.admin-bar .site-header.fixed-top {
+    top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar .site-header.fixed-top {
+        top: 46px;
+    }
+
+    body.admin-bar .site-main {
+        padding-top: calc(var(--et-nav-height) + 46px);
+    }
+}
+
 /* 3. Tipografía ----------------------------------------------------------- */
 .display-1, .display-2, .display-3, .display-4 {
     letter-spacing: -0.02em;
@@ -208,6 +223,24 @@ body.admin-bar .site-main {
 
 .site-header .navbar-toggler {
     border: none;
+}
+
+/* Menú hamburguesa: opciones más compactas cuando se apilan en columna */
+@media (max-width: 991.98px) {
+    .site-header .navbar-nav .nav-link {
+        height: auto;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--et-border);
+    }
+
+    .site-header .navbar-nav .nav-link.current-menu-item,
+    .site-header .navbar-nav .nav-link.active {
+        border-bottom-color: var(--et-primary);
+    }
+
+    #navbar-menu {
+        padding: 0.5rem 0 1rem;
+    }
 }
 
 /* 6. Hero ----------------------------------------------------------------- */

@@ -5,7 +5,6 @@ Thumbs.db
 *.swo
 
 # Editor / IDE
-.vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
@@ -16,3 +15,7 @@ Thumbs.db
 *.cache
 npm-debug.log*
 yarn-error.log*
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
