@@ -49,11 +49,12 @@
 	}
 
 	// Resalta en el menú la sección visible actual (páginas de una sola vista con anclas).
-	var navLinks = document.querySelectorAll('#primary-menu .nav-link[href^="#"]');
+	var navLinks = document.querySelectorAll('#primary-menu .nav-link[href*="#"]');
 	if (navLinks.length) {
 		var sections = [];
 		navLinks.forEach(function (link) {
-			var section = document.getElementById(link.getAttribute('href').slice(1));
+			var hash = link.getAttribute('href').split('#')[1];
+			var section = hash ? document.getElementById(hash) : null;
 			if (section) {
 				sections.push({ link: link, section: section });
 			}
