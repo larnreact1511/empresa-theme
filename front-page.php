@@ -13,7 +13,7 @@ get_header();
 ?>
 
 	<!-- Hero -->
-	<section class="hero" aria-labelledby="hero-title">
+	<section id="inicio" class="hero" aria-labelledby="hero-title">
 		<div class="container">
 			<div class="row align-items-center g-5">
 				<div class="col-lg-6 reveal">

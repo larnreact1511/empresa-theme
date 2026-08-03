@@ -47,4 +47,48 @@
 			});
 		});
 	}
+
+	// Resalta en el menú la sección visible actual (páginas de una sola vista con anclas).
+	var navLinks = document.querySelectorAll('#primary-menu .nav-link[href^="#"]');
+	if (navLinks.length) {
+		var sections = [];
+		navLinks.forEach(function (link) {
+			var section = document.getElementById(link.getAttribute('href').slice(1));
+			if (section) {
+				sections.push({ link: link, section: section });
+			}
+		});
+
+		var navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--et-nav-height'), 10) || 72;
+
+		var setActiveLink = function () {
+			var current = sections[0];
+			sections.forEach(function (item) {
+				if (item.section.getBoundingClientRect().top - navHeight <= 1) {
+					current = item;
+				}
+			});
+			navLinks.forEach(function (link) {
+				link.classList.remove('active');
+				link.removeAttribute('aria-current');
+			});
+			if (current) {
+				current.link.classList.add('active');
+				current.link.setAttribute('aria-current', 'page');
+			}
+		};
+
+		var ticking = false;
+		window.addEventListener('scroll', function () {
+			if (!ticking) {
+				window.requestAnimationFrame(function () {
+					setActiveLink();
+					ticking = false;
+				});
+				ticking = true;
+			}
+		});
+
+		setActiveLink();
+	}
 })();

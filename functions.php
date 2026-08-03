@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Acceso directo no permitido.
 }
 
-define( 'EMPRESA_THEME_VERSION', '1.0.1' );
+define( 'EMPRESA_THEME_VERSION', '1.0.3' );
 
 /**
  * Configuración básica del tema.

@@ -58,6 +58,7 @@ Tags: blog, business, corporate, portfolio, custom-logo, custom-menu, featured-i
 /* 2. Base ----------------------------------------------------------------- */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--et-nav-height);
     overflow-x: hidden;
 }
 
